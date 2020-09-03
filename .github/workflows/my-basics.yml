@@ -17,6 +17,7 @@ jobs:
         run: echo "Hello World from Testing job"
       - name: List current folder
         run: ls -la
+      - name: pwd  
         run: pwd
         
       - name: Execure few comands

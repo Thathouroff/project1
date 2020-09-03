@@ -1,6 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI
+env:
+  APPLICATION_NAME   : "MyFlask"
+  DEPLOY_PACKAGE_NAME: "Flask-deploy-version-${{ github.sha }}"
 
 on:
   push:
@@ -12,6 +15,13 @@ jobs:
     steps:
       - name: Print Hello Message
         run: echo "Hello World from Testing job"
+      
+      - name: Execure few comands
+        run : 
+          echo "Hello message1"
+          echo "Hello message2" 
+          echo "Application name ${{ env.APPLICATION_NAME }}"
+          
   my_deploy:
     runs-on: ubuntu-latest
     needs: [my_testing]
@@ -19,3 +29,6 @@ jobs:
       - name: Print Hello Message
         run: echo "Hello World from Deploy job"
       
+      - name: Printing Deployment packege
+        run : echo "Deploy packege name is ${{ env.APPLICATION_NAME }}"
+     
